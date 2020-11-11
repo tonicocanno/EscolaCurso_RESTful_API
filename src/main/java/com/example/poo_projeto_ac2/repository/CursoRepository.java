@@ -11,7 +11,6 @@ import org.springframework.stereotype.Component;
 @Component
 public class CursoRepository {
 
-    
     private ArrayList<Curso> cursos = new ArrayList<Curso>();
     private static int nextId = 1;
 

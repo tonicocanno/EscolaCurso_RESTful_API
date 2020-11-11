@@ -19,10 +19,19 @@ public class EscolaService {
     @Autowired
     private EscolaRepository repositorio;
 
-    public Escola fromDTO(EscolaDTO dto){
+    public Escola saveFromDTO(EscolaDTO dto){
         Escola escola = new Escola();
         escola.setNome(dto.getNome());
         escola.setDiretor(dto.getDiretor());
+        escola.setEndereco(dto.getEndereco());
+        return escola;
+    }
+
+    public Escola updateFromDTO(EscolaDTO dto){
+        Escola escola = new Escola();
+        escola.setNome(dto.getNome());
+        escola.setDiretor(dto.getDiretor());
+        escola.setEndereco(dto.getEndereco());
         return escola;
     }
 

@@ -4,6 +4,7 @@ public class EscolaDTO {
     
     private String nome;
     private String diretor;
+    private String endereco;
 
     public String getNome() {
         return nome;
@@ -19,6 +20,14 @@ public class EscolaDTO {
 
     public void setDiretor(String diretor) {
         this.diretor = diretor;
+    }
+
+    public String getEndereco() {
+        return endereco;
+    }
+
+    public void setEndereco(String endereco) {
+        this.endereco = endereco;
     }
 
 }

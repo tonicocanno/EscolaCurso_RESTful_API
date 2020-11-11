@@ -46,7 +46,7 @@ public class EscolaController {
 
     @PostMapping()
     public ResponseEntity<Void> salvar(@RequestBody EscolaDTO escolaDTO, HttpServletRequest request, UriComponentsBuilder builder){
-        Escola escola = escolaService.fromDTO(escolaDTO);
+        Escola escola = escolaService.saveFromDTO(escolaDTO);
         escola = escolaService.salvar(escola);
         UriComponents uriComponents = builder.path(request.getRequestURI() + "/" + escola.getId()).build();
         return ResponseEntity.created(uriComponents.toUri()).build();
@@ -61,7 +61,7 @@ public class EscolaController {
     //Unicos dados que poderao ser atualizados são: nome e diretor(a)
     @PutMapping("/{id}")
     public ResponseEntity<Escola> atualizar(@PathVariable int id, @RequestBody EscolaDTO escolaDTO){
-        Escola escola = escolaService.fromDTO(escolaDTO);
+        Escola escola = escolaService.updateFromDTO(escolaDTO);
         escola.setId(id);
         escola = escolaService.atualizar(escola);
         return ResponseEntity.ok(escola);
