@@ -9,6 +9,9 @@ public class Escola {
     private String nome;
     private String diretor;
     private String endereco;
+    
+    @JsonIgnore
+    private boolean temCurso;
 
     @JsonIgnore
     private ArrayList<Curso> cursos = new ArrayList<Curso>();
@@ -59,6 +62,14 @@ public class Escola {
 
     public boolean removeCurso(Curso curso){
         return cursos.remove(curso);
+    }
+
+    public boolean isTemCurso() {
+        return temCurso;
+    }
+
+    public void setTemCurso(boolean temCurso) {
+        this.temCurso = temCurso;
     }
     
 }

@@ -20,23 +20,15 @@ public class EscolaRepository {
     @PostConstruct
     public void criarEscola(){
         Escola e1 = new Escola();
-        Escola e2 = new Escola();
 
         e1.setId(1);
-        e1.setNome("Facens");
-        e1.setEndereco("Rua X, 00");
-        e1.setDiretor("Antonio");
-
-        e2.setId(2);
-        e2.setNome("Figueiroa");
-        e2.setEndereco("Rua Y, 70");
-        e2.setDiretor("Osvaldinho");
+        e1.setNome("FACENS");
+        e1.setEndereco("Rod. Sen. José Ermirio de Moraes, 1425");
+        e1.setDiretor("Paulo");
 
         escolas = new ArrayList<Escola>();
         escolas.add(e1);
-        escolas.add(e2);
-
-        nextCode = 3;
+        nextCode = 2;
     }
 
     public List<Escola> getTodasEscolas(){
@@ -59,7 +51,7 @@ public class EscolaRepository {
     }
 
     public void remove(Escola escola){
-        if(escola.getCursos().isEmpty()){
+        if(escola.isTemCurso() == false){
             escolas.remove(escola);
         }
     }

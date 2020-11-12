@@ -1,5 +1,6 @@
 package com.example.poo_projeto_ac2.service;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -41,6 +42,7 @@ public class CursoService {
         Escola escola = escolaService.getEscolaPorId(id);
         curso.setEscola(escola);
         escola.addCurso(curso);
+        escola.setTemCurso(true);
         return repositorio.salvar(curso);
     }
 
@@ -55,6 +57,24 @@ public class CursoService {
     public Curso atualizar(Curso curso){
         getCursoPorId(curso.getId());
         return repositorio.atualizar(curso);
+    }
+
+    public CursoDTO toDTO(Curso  curso){
+        CursoDTO dto = new CursoDTO();
+        dto.setId(curso.getId());
+        dto.setNome(curso.getNome());
+        dto.setProfessor(curso.getProfessor());
+        dto.setDescricao(curso.getDescricao());
+        dto.setCargaHoraria(curso.getCargaHoraria());
+        return dto;
+    }
+
+    public List<CursoDTO> toListDTO(List<Curso> cursos){
+        ArrayList<CursoDTO> listDTO = new ArrayList<CursoDTO>();
+        for(Curso aux: cursos){
+            listDTO.add(toDTO(aux));
+        }
+        return listDTO;
     }
 
 }

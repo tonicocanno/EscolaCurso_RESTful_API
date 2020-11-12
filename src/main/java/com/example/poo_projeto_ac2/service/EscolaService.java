@@ -19,7 +19,7 @@ public class EscolaService {
     @Autowired
     private EscolaRepository repositorio;
 
-    public Escola saveFromDTO(EscolaDTO dto){
+    public Escola saveDTO(EscolaDTO dto){
         Escola escola = new Escola();
         escola.setNome(dto.getNome());
         escola.setDiretor(dto.getDiretor());
@@ -27,11 +27,10 @@ public class EscolaService {
         return escola;
     }
 
-    public Escola updateFromDTO(EscolaDTO dto){
+    public Escola updateDTO(EscolaDTO dto){
         Escola escola = new Escola();
         escola.setNome(dto.getNome());
         escola.setDiretor(dto.getDiretor());
-        escola.setEndereco(dto.getEndereco());
         return escola;
     }
 
@@ -59,6 +58,12 @@ public class EscolaService {
 
     public void removeCurso(Curso curso){
         repositorio.removeCurso(curso);
+    }
+
+    public void validaEscola(Escola escola){
+        if(escola.getCursos().isEmpty()){
+            escola.setTemCurso(false);
+        }
     }
 
 }

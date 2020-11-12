@@ -39,7 +39,6 @@ public class CursoRepository {
 
     public Curso atualizar(Curso curso){
         Curso aux = getCursoPorId(curso.getId()).get();
-
         if(aux != null){
             aux.setProfessor(curso.getProfessor());
         }
