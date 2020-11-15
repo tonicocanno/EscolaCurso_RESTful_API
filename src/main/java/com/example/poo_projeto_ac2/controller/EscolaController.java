@@ -62,9 +62,9 @@ public class EscolaController {
         //Verefica de escola possue curso antes da vereficar confição do 'if'
         escolaService.validaEscola(escolaRepositorio.getEscolaPorId(id).get());
         if(escolaRepositorio.getEscolaPorId(id).get().isTemCurso() == false){
+            escolaService.removePorId(id);
             return ResponseEntity.noContent().build();
         }
-        escolaService.removePorId(id);
         return ResponseEntity.badRequest().build();
     }
 
